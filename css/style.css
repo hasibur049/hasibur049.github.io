@@ -1,5 +1,7 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+/* Font is now loaded via <link rel="preload"> + <link rel="stylesheet"> in index.html <head>,
+   with preconnect hints — this avoids the @import waterfall (CSS -> font CSS -> font files)
+   which was adding a full extra round trip before text could render. Do not re-add @import here. */
 
 /* --- CSS VARIABLES & GLOBALS --- */
 :root {
@@ -569,7 +571,7 @@ body {
   text-align: left;
 }
 
-.a-stat h4 {
+.a-stat h3 {
   font-family: var(--font-heading);
   font-size: 2.6rem;
   font-weight: 800;
@@ -809,7 +811,7 @@ body {
   border: 2px solid var(--border-color-hover);
 }
 
-.t-author h6 {
+.t-author h3 {
   font-family: var(--font-heading);
   font-size: 1.1rem;
   font-weight: 700;
@@ -886,7 +888,7 @@ body {
   text-align: left;
 }
 
-.m-footer-links h6 {
+.m-footer-links h3 {
   font-family: var(--font-heading);
   font-size: 1.1rem;
   font-weight: 700;
@@ -1305,7 +1307,7 @@ select.form-control option {
     margin: 0 auto !important;
   }
 
-  .m-footer-brand p, .m-footer-links a, .m-footer-links span, .m-footer-links h6 {
+  .m-footer-brand p, .m-footer-links a, .m-footer-links span, .m-footer-links h3 {
     text-align: center !important;
   }
 
@@ -1315,3 +1317,43 @@ select.form-control option {
     text-align: center;
   }
 }
+
+/* --- UTILITY CLASSES (replacing inline styles for cleaner HTML / better caching) --- */
+.u-border-green { border: 2px solid #10b981; }
+.u-text-green-dark { color: #064e3b; }
+.u-bg-green { background: #10b981; }
+.u-bg-green-solid { background: #10b981; color: #fff; }
+.u-btn-compact { padding: 12px 28px; font-size: 0.95rem; }
+.u-btn-compact-top { padding: 12px 28px; font-size: 0.95rem; margin-top: 24px; }
+.u-btn-whatsapp-cta {
+  background: #10b981;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 100px;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+  text-decoration: none;
+}
+.u-grad-dark { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+.u-grad-orange { background: linear-gradient(135deg, #ea580c 0%, #7c2d12 100%); }
+.u-grad-purple { background: linear-gradient(135deg, #4c1d95 0%, #1e1b4b 100%); }
+.u-text-orange { color: var(--btn-orange); }
+.u-text-purple { color: #a855f7; }
+.u-footer-brand-title { font-size: 2rem; color: #fff; }
+.u-footer-brand-desc { color: var(--text-muted); font-size: 0.95rem; margin-top: 12px; max-width: 280px; }
+.u-text-muted-light { color: #cbd5e1; }
+.u-flex-gap8 { display: inline-flex; align-items: center; gap: 8px; }
+.u-flex-gap24 { display: flex; gap: 24px; }
+.u-whatsapp-footer-link {
+  color: #10b981;
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.u-btn-modal-submit { margin-top: 10px; width: 100%; padding: 14px; font-size: 1.05rem; border-radius: 100px; }
+.u-success-title { font-family: var(--font-heading); font-size: 1.8rem; color: #fff; margin-bottom: 12px; }
+.u-success-desc { color: var(--text-muted); font-size: 1rem; margin-bottom: 24px; line-height: 1.6; }
+.u-btn-close-modal { padding: 12px 32px; }
